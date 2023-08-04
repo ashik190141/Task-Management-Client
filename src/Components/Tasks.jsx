@@ -68,7 +68,7 @@ const Tasks = () => {
     }
     return (
         <div className="max-w-7xl mx-auto">
-            <div className="hidden md:hidden lg:block">
+            <div className="overflow-x-auto hidden md:hidden lg:block">
                 <table className="table border-1">
                     {/* head */}
                     <thead>
@@ -101,12 +101,12 @@ const Tasks = () => {
                     </tbody>
             </table>
             </div>
-            <div className="block md:block lg:hidden">
-                <div className="grid grid-cols-1 md:grid-cols-2">
-                    <div className="flex flex-col items-center justify-center">
+            <div className="overflow-x-auto block md:block lg:hidden">
+                <div className="flex items-center justify-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         {
                             tasks.map(task => <div key={task._id}>
-                                <div className="card w-96 bg-neutral text-white shadow-xl">
+                                <div className="card w-80 bg-neutral text-white shadow-xl">
                                     <div className="card-body items-center text-center">
                                         <h2 className="card-title">{task.name}</h2>
                                         <p className="text-justify">{task.description}</p>
