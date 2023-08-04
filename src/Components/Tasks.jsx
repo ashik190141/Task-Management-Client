@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseTitle from "../Hooks/UseTitle";
 
-
 const Tasks = () => {
     UseTitle('Tasks');
     const {data: tasks = [], refetch} = useQuery(['tasks'], async () => {
@@ -68,17 +67,18 @@ const Tasks = () => {
     }
     return (
         <div className="max-w-7xl mx-auto">
+            <h2 className="text-center text-3xl my-20">Task Management Information Table</h2>
             <div className="overflow-x-auto hidden md:hidden lg:block">
-                <table className="table border-1">
+                <table className="table border-separate border-spacing-2 border border-slate-400">
                     {/* head */}
                     <thead>
                         <tr>
-                            <th className='text-xl font-bold text-center'>Serial No</th>
-                            <th className='text-xl font-bold text-center'>Task Name</th>
-                            <th className='text-xl font-bold text-center'>Task Description</th>
-                            <th className='text-xl font-bold text-center'>Deadline</th>
-                            <th className='text-xl font-bold text-center'>Status</th>
-                            <th className='text-xl font-bold text-center'>Delete</th>
+                            <th className='border border-slate-600 text-xl font-bold text-center'>Serial No</th>
+                            <th className='border border-slate-600 text-xl font-bold text-center'>Task Name</th>
+                            <th className=' border border-slate-600 text-xl font-bold text-center'>Task Description</th>
+                            <th className='border border-slate-600 text-xl font-bold text-center'>Deadline</th>
+                            <th className='border border-slate-600 text-xl font-bold text-center'>Status</th>
+                            <th className='border border-slate-600 text-xl font-bold text-center'>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,16 +101,16 @@ const Tasks = () => {
                     </tbody>
             </table>
             </div>
-            <div className="overflow-x-auto block md:block lg:hidden">
+            <div className="overflow-x-auto block md:block lg:hidden mt-20">
                 <div className="flex items-center justify-center">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         {
                             tasks.map(task => <div key={task._id}>
                                 <div className="card w-80 bg-neutral text-white shadow-xl">
                                     <div className="card-body items-center text-center">
-                                        <h2 className="card-title">{task.name}</h2>
-                                        <p className="text-justify">{task.description}</p>
-                                        <p className="text-center">Deadline: {task.date}</p>
+                                        <h2 className="card-title w-40 h-24">{task.name}</h2>
+                                        <p className="text-justify h-40 overflow-auto">{task.description}</p>
+                                        <p className="text-center mt-4">Deadline: {task.date}</p>
                                         <div className="card-actions justify-end">
                                             <button onClick={() => handleStatusUpdate(task)} className="btn btn-link text-white text-xl" disabled={task.status=='Completed' || currentDate<task.date}>{currentDate<task.date ? 'Incomplete':`${task.status}`}</button>
                                         </div>
@@ -124,8 +124,8 @@ const Tasks = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex flex-col items-center justify-center mt-10'>
-                <Link to="/add"><button className="btn btn-primary">Add a New Task</button></Link>
+            <div className='mt-10 ml-14 md:ml-14 lg:ml-0'>
+                <Link to="/add"><button className="btn btn-neutral">Add a New Task</button></Link>
             </div>
         </div>
     );
