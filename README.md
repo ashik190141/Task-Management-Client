@@ -1,5 +1,11 @@
 # React + Vite
 
+# live site: https://task-management-d47c4.web.app/
+
+# client site: https://github.com/ashik190141/Task-Management-Client
+
+# server site: https://github.com/ashik190141/Task-Management-Server
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
